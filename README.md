@@ -10,6 +10,6 @@
 <div align="center">
 <strong><i> Made with ❤️ by
 
-[Arinjoy Github](https://github.com/ArinjoyProgrammer)  ||  **<  Arinjoy.py />#0994** 
+[Arinjoy Github](https://github.com/ArinjoyProgrammer)  ||  **< Arinjoy.py />#0994** 
 </i></strong> (Discord Profile)
 </div>

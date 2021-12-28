@@ -7,7 +7,7 @@ import random
 
 load_dotenv()
 
-prefixes = 'd!', 'D!', '.'
+prefixes = 'd!', 'D!'
 
 client = commands.Bot(command_prefix = prefixes)
 
