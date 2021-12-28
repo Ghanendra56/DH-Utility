@@ -13,30 +13,116 @@ class SpecialCommands(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(manage_messages=True)
-    async def hack(self, ctx, member : discord.Member):
+    async def serverinfo(self, ctx):
+        name = str(ctx.guild.name)
 
-        random_password = ['36b29c', 'kt764a', '45cvv76', 'fh90;ll', 'gda889', 'kla789', 'kkk89q', 'ff89f52', '95632lrt']
+        server_name = str(ctx.guild.name)
+        id = str(ctx.guild.id)
+        region = str(ctx.guild.region)
+        memberCount = str(ctx.guild.member_count)
 
-        await ctx.send(f"Hacking Satrted on {member}")
-        await ctx.send(f"Hacking Username and Password of {member}")
-        await asyncio.sleep(4)
-        await ctx.send(f"Hacked!\nUsername - ``{member}\nPassword - **{random.choice(random_password)}**")
-        await asyncio.sleep(4)
-        await ctx.send("Hacking Completed 20%")
-        await asyncio.sleep(3)
-        await ctx.send("Hacking Completed 30%")
-        await asyncio.sleep(3)
-        await ctx.send("Hacking Completed 50%")
-        await asyncio.sleep(3)
-        await ctx.send("Hacking Epic Games and Steam Account")
-        await asyncio.sleep(2)
-        await ctx.send("Hacking Epic Games and Steam Account Completed Successfully")
-        await asyncio.sleep(3)
-        await ctx.send("Hacking Completed 80%")
-        await asyncio.sleep(3)
-        await ctx.send("Hacking Completed 90%")
-        await asyncio.sleep(4)
-        await ctx.send(f"A **Dangerous Hacking** Completed on **{member}**\nDon't mind this was a really **Fake Hack**")
+        icon = str(ctx.guild.icon_url)
+
+        embed = discord.Embed(
+            title=name + " Server Information",
+            description="",
+            color=discord.Color.random()
+        )
+        embed.set_thumbnail(url=icon)
+        embed.add_field(name="Server Name", value=server_name, inline=True)
+        embed.add_field(name="Server ID", value=id, inline=True)
+        embed.add_field(name="Channels: ", value=len(
+            ctx.message.guild.channels), inline=True)
+        embed.add_field(name="Country", value=region, inline=True)
+        embed.add_field(name="Member Count", value=memberCount, inline=True)
+        embed.add_field(name="Requested By: ", value=str(
+            ctx.message.author.mention), inline=False)
+        await ctx.message.delete()
+
+        await ctx.send(embed=embed)
+
+
+    @commands.command(pass_context=True)
+    @commands.has_permissions(manage_messages=True)
+    async def timenow(self, ctx):
+        embed = discord.Embed(
+            title="Time Now",
+            description=f"See the footer to see the time for now!",
+            timestamp=datetime.now(),
+            color=0xd9bf18
+        )
+        await ctx.message.delete()
+
+        await ctx.send(embed=embed)
+
+
+    @commands.command(pass_context=True)
+    @commands.has_permissions(manage_messages=True)
+    async def nowtime(self, ctx):
+        embed = discord.Embed(
+            title="Time Now",
+            description="See the footer to see the time for now!",
+            timestamp=datetime.now(),
+            color=0xd9bf18
+        )
+        await ctx.message.delete()
+
+        await ctx.send(embed=embed)
+
+
+    @commands.command()
+    @commands.has_permissions(manage_messages=True)
+    async def membercount(self, ctx):
+        embed = discord.Embed(
+            title="**Members**",
+            description=f"{ctx.guild.member_count}",
+            timestamp=datetime.now(),
+            color=discord.Color.blue()
+        )
+        await ctx.message.delete()
+        await ctx.send(embed=embed)
+
+    
+    @commands.command(aliases=['announce'])
+    @commands.has_permissions(manage_messages=True)
+    async def announcement(self, ctx, *, announcement):
+        await ctx.send(f"{announcement}")
+        await ctx.message.delete()
+
+
+    @commands.command(name="whois")
+    @commands.has_permissions(manage_messages=True)
+    async def whois(self, ctx, user: discord.Member = None):
+
+        if user == None:
+            user = ctx.author
+
+        rlist = []
+        for role in user.roles:
+            if role.name != "@everyone":
+                rlist.append(role.mention)
+
+        b = ", ".join(rlist)
+
+        embed = discord.Embed(colour=user.color, timestamp=datetime.now())
+
+        embed.set_author(name=f"User Info - {user}"),
+        embed.set_thumbnail(url=user.avatar_url),
+
+        embed.add_field(name='ID:', value=user.id, inline=False)
+        embed.add_field(name='Name:', value=user.display_name, inline=False)
+
+        embed.add_field(name='Created at:', value=user.created_at, inline=False)
+        embed.add_field(name='Joined at:', value=user.joined_at, inline=False)
+
+        embed.add_field(name='Bot?', value=user.bot, inline=False)
+
+        embed.add_field(name=f'Roles:({len(rlist)})',
+                        value=''.join([b]), inline=False)
+        embed.add_field(name='Top Role:',
+                        value=user.top_role.mention, inline=False)
+        await ctx.message.delete()
+        await ctx.send(embed=embed)
 
 
 
