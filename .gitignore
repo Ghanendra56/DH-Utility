@@ -1,5 +1,5 @@
 /.env
 cmd.bat
 .vscode/
-__pycache__/
+cogs/__pycache__/
 filtered_words.py
