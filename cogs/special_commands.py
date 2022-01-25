@@ -126,15 +126,15 @@ class SpecialCommands(commands.Cog):
 
 
     @commands.command()
-    async def suggestion(self, ctx, member: discord.Member, *, suggestion="No **Suggestion** was given"):
+    async def suggestion(self, ctx, member: discord.Member=None, *, suggestion="No **Suggestion** was given"):
         channel = self.client.get_channel(934058395005235220)
 
         if not channel:
             return False
 
-        await ctx.send(f"Thanks {member.mention} for your **suggestion**\nYour **Suggestion** has been received!")
+        await ctx.reply(f"Thanks  for your **suggestion**\nYour **Suggestion** has been received!")
 
-        await channel.send(f"**Suggester Name** - {member.mention} | **{member}**\n\n**Suggestion/Idea** - ``{suggestion}``")
+        await channel.send(f"**Suggestion/Idea** - ``{suggestion}``")
 
 
 
