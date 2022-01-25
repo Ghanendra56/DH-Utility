@@ -10,7 +10,7 @@ class HelpCommand(commands.Cog):
 
         
     @commands.command()
-    async def help(self, ctx):
+    async def old_help_cmd(self, ctx):
 
         servericon = str(ctx.guild.icon_url)
 
@@ -33,6 +33,14 @@ class HelpCommand(commands.Cog):
         embed.add_field(name="Moderation Commands (Unmute) :- ",value="Type - **d!unmute**\nResult - The member will be **Unmuted** from the server\nNote :- \nThis command can be only used by the people who have **Manage Messages** permission roles in the server.", inline=True)
         
         embed.set_footer(text="This is the help commands for DHS | Official. \nNote - These commands can be changed in future!")
+
+        await ctx.send(embed=embed)
+
+
+
+    @commands.command()
+    async def help(self, ctx):
+        embed = discord.Embed(title="Help Command || DH Utility", description="This Help Command is remaking. But Command will be ready soon!\n\nBut don't worry Old Help Command is there! For that type ``d!old_help_cmd``", timestamp=datetime.utcnow(), color=discord.Color.random())
 
         await ctx.send(embed=embed)
 
