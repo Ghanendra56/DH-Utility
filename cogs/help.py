@@ -40,7 +40,7 @@ class HelpCommand(commands.Cog):
 
     @commands.command()
     async def help(self, ctx):
-        embed = discord.Embed(title="Help Command || DH Utility", description="This Help Command is remaking. But Command will be ready soon!\n\nBut don't worry Old Help Command is there! For that type ``d!old_help_cmd``", timestamp=datetime.utcnow(), color=discord.Color.random())
+        embed = discord.Embed(title="Help Command || DH Utility", description="This Help Command is remaking. But the Command will be ready soon!\n\nBut don't worry Old Help Command is there! For that type - ``d!old_help_cmd``", timestamp=datetime.utcnow(), color=discord.Color.random())
 
         await ctx.send(embed=embed)
 
