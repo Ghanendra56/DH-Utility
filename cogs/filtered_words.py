@@ -20,9 +20,5 @@ class FilteredWords(commands.Cog):
                 await message.channel.send(":x: These types of messages aren't allowed in this server!\n***Message Deleted***")
                 await message.delete()
 
-            elif msg(items):
-                await message.channel.send(":x: These types of messages aren't allowed in this server!\n***Message Deleted***")
-                await message.delete()
-
 def setup(client):
     client.add_cog(FilteredWords(client))

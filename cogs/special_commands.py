@@ -126,16 +126,26 @@ class SpecialCommands(commands.Cog):
 
 
     @commands.command()
-    async def suggestion(self, ctx, member: discord.Member=None, *, suggestion="No **Suggestion** was given"):
+    async def suggestion(self, ctx, *, suggestion="No **Suggestion** was given"):
         channel = self.client.get_channel(934058395005235220)
 
         if not channel:
             return False
 
-        await ctx.reply(f"Thanks  for your **suggestion**\nYour **Suggestion** has been received!")
+        author_mention = ctx.author.mention
+        author = ctx.author
 
-        await channel.send(f"**Suggestion/Idea** - ``{suggestion}``")
+        await ctx.send(f"Thanks {author_mention} for your **suggestion**\nYour **Suggestion** has been received!")
 
+        await channel.send(f"**Suggester Name** - {author_mention} | **{author}**\n\n**Suggestion/Idea** - ``{suggestion}``")
+
+
+    @commands.command()
+    async def find(self, ctx, *, query):
+        author = ctx.author.mention
+        search_results = f"https://google.com/search?q={query}"
+
+        await ctx.channel.send(f"{author} Your results are here **{search_results}**!")
 
 
 
