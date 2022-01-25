@@ -2,3 +2,4 @@
 cmd.bat
 .vscode/
 __pycache__/
+filtered_words.py
